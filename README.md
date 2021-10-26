@@ -1,5 +1,6 @@
 # RAONE
-
+<img src="https://telegra.ph/file/b820b4247cb3451ddd7e9.jpg">
+</p>
 A modular Telegram UserBot for Python which uses the [Telethon][telethon] library. It is made to help you do your usual client tasks without the hassle and also has some additional useful features.
 
 [![Documentation Status][docsbadge]][docs]
