@@ -116,28 +116,6 @@ if not (API_ID and API_HASH):
     LOGGER.debug("No API keys!")
     sys.exit(1)
 
-if REDIS_ENDPOINT and REDIS_PASSWORD:
-    try:
-        REDIS_HOST = REDIS_ENDPOINT.split(':')[0]
-        REDIS_PORT = REDIS_ENDPOINT.split(':')[1]
-        redis_connection = redis.Redis(
-            host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD
-        )
-        redis_connection.ping()
-    except Exception as e:
-        LOGGER.exception(e)
-        print()
-        LOGGER.error(
-            "Make sure you have the correct Redis endpoint and password "
-            "and your machine can make connections."
-        )
-        sys.exit(1)
-    LOGGER.debug("Connected to Redis successfully!")
-    redis_db = redis_connection
-    if not sql_session.exists():
-        LOGGER.debug("Using Redis session!")
-        session = RedisSession("userbot", redis_connection)
-
 client = UserBotClient(
     session=session,
     api_id=API_ID,
